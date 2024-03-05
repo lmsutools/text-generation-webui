@@ -63,5 +63,44 @@ export CUDA_HOME="$CUDA_PATH"
 source "$CONDA_ROOT_PREFIX/etc/profile.d/conda.sh" # otherwise conda complains about 'shell not initialized' (needed when running in a script)
 conda activate "$INSTALL_ENV_DIR"
 
+# Install TTS module via pip
+echo "Installing TTS module via pip..."
+pip install TTS
+
+# Define the path to the extensions directory
+EXTENSIONS_DIR="$(pwd)/extensions"
+
+# Ensure the extensions directory exists
+mkdir -p "$EXTENSIONS_DIR"
+
+# Define the repository to clone and the target directory
+REPO_URL="https://github.com/erew123/alltalk_tts/"
+TARGET_DIR="$EXTENSIONS_DIR/alltalk_tts"
+
+# Check if the target directory already exists (i.e., if the repo has already been cloned)
+if [ ! -d "$TARGET_DIR" ]; then
+    # The target directory does not exist, clone the repository
+    echo "Cloning alltalk_tts repository into $TARGET_DIR"
+    git clone "$REPO_URL" "$TARGET_DIR"
+else
+    echo "The alltalk_tts repository has already been cloned."
+fi
+
+
+cd "$TARGET_DIR"
+
+# Check if the requirements_nvidia.txt file exists
+if [ -f "requirements_nvidia.txt" ]; then
+    echo "Installing dependencies from requirements_nvidia.txt..."
+    pip install -r requirements_nvidia.txt
+else
+    echo "requirements_nvidia.txt not found in $TARGET_DIR."
+fi
+
+# Return to the original script directory
+cd -
+
+
 # setup installer env
-python one_click.py $@
+python one_click.py --extensions alltalk_tts $@
+
