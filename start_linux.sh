@@ -66,6 +66,7 @@ conda activate "$INSTALL_ENV_DIR"
 # Install TTS module via pip
 echo "Installing TTS module via pip..."
 pip install TTS
+pip install rich
 
 # Define the path to the extensions directory
 EXTENSIONS_DIR="$(pwd)/extensions"
