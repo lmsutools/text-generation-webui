@@ -25,7 +25,7 @@ Its goal is to become the [AUTOMATIC1111/stable-diffusion-webui](https://github.
 1) Clone or [download](https://github.com/oobabooga/text-generation-webui/archive/refs/heads/main.zip) the repository.
 2) Run the `start_linux.sh`, `start_windows.bat`, `start_macos.sh`, or `start_wsl.bat` script depending on your OS.
 3) Select your GPU vendor when asked.
-4) Once the installation ends, browse to `http://localhost:7860/?__theme=dark`.
+4) Once the installation ends, browse to `http://localhost:6006/?__theme=dark`.
 5) Have fun!
 
 To restart the web UI in the future, just run the `start_` script again. This script creates an `installer_files` folder where it sets up the project's requirements. In case you need to reinstall the requirements, you can simply delete that folder and start the web UI again.
@@ -127,7 +127,7 @@ python server.py
 
 Then browse to
 
-`http://localhost:7860/?__theme=dark`
+`http://localhost:6006/?__theme=dark`
 
 ##### AMD GPU on Windows
 
